@@ -69,3 +69,133 @@
   --app-font: "Kumbh Sans", sans-serif;
   --app-color: var(--color-red-400);
 }
+/* text-presets */
+/*Font-1*/
+[data-font="kumbh-sans"] .text-preset-1 {
+  font-family: "Kumbh Sans";
+  font-weight: 700;
+  font-size: 6.25rem;
+  line-height: 125%;
+  letter-spacing: -0.001em;
+}
+[data-font="kumbh-sans"] .text-preset-1-mobile {
+  font-family: "Kumbh Sans";
+  font-weight: 700;
+  font-size: 5rem;
+  line-height: 125%;
+  letter-spacing: -0.001em;
+}
+[data-font="kumbh-sans"] .text-preset-2 {
+  font-family: "Kumbh Sans";
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 125%;
+  letter-spacing: 0.9375em;
+}
+[data-font="kumbh-sans"] .text-preset-2-mobile {
+  font-family: "Kumbh Sans";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 120%;
+  letter-spacing: 0.9285em;
+}
+[data-font="kumbh-sans"] .text-preset-3 {
+  font-family: "Kumbh Sans";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 120%;
+  letter-spacing: 0em;
+}
+[data-font="kumbh-sans"] .text-preset-3-mobile {
+  font-family: "Kumbh Sans";
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 125%;
+  letter-spacing: 0em;
+}
+/*Font 2*/
+[data-font="roboto-slab"] .text-preset-1 {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 6.25rem;
+  line-height: 130%;
+  letter-spacing: 0em;
+}
+[data-font="roboto-slab"] .text-preset-1-mobile {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 5rem;
+  line-height: 133%;
+  letter-spacing: 0em;
+}
+[data-font="roboto-slab"] .text-preset-2 {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 125%;
+  letter-spacing: 0.9375em;
+}
+[data-font="roboto-slab"] .text-preset-2-mobile {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 130%;
+  letter-spacing: 0.9285em;
+}
+[data-font="roboto-slab"] .text-preset-3 {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 130%;
+  letter-spacing: 0em;
+}
+[data-font="roboto-slab"] .text-preset-3-mobile {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 133%;
+  letter-spacing: 0em;
+}
+/*Font 3*/
+[data-font="space-mono"] .text-preset-1 {
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-size: 6.25rem;
+  line-height: 150%;
+  letter-spacing: -0.1em;
+}
+[data-font="space-mono"] .text-preset-1-mobile {
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-size: 5rem;
+  line-height: 120%;
+  letter-spacing: -0.125em;
+}
+[data-font="space-mono"] .text-preset-2 {
+  font-family: "Space Mono";
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 150%;
+  letter-spacing: 0.9375em;
+}
+[data-font="space-mono"] .text-preset-2-mobile {
+  font-family: "Space Mono";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 150%;
+  letter-spacing: 0.9285em;
+}
+[data-font="space-mono"] .text-preset-3 {
+  font-family: "Space Mono";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 145%;
+  letter-spacing: 0em;
+}
+[data-font="space-mono"] .text-preset-3-mobile {
+  font-family: "Space Mono";
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 133%;
+  letter-spacing: 0em;
+}
