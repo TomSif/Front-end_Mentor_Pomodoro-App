@@ -1,1 +1,71 @@
 @import "tailwindcss";
+
+/* kumbh-sans-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Kumbh Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/kumbh-sans-v27-latin-regular.woff2") format("woff2");
+}
+/* kumbh-bold */
+@font-face {
+  font-display: swap;
+  font-family: "Kumbh Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/kumbh-sans-v27-latin-700.woff2") format("woff2");
+}
+/* roboto-slab-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/roboto-slab-v36-latin-regular.woff2") format("woff2");
+}
+/* roboto-slab-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/roboto-slab-v36-latin-700.woff2") format("woff2");
+}
+/* space-mono-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/space-mono-v17-latin-regular.woff2") format("woff2");
+}
+/* space-mono-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/space-mono-v17-latin-700.woff2") format("woff2");
+}
+
+@theme {
+  /* Colors COLLECTION */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-cyan-300: #70f3f8;
+  --color-red-400: #f87070;
+  --color-purple-400: #d881f8;
+  --color-grey-200: #e3e1e1;
+  --color-grey-400: #bbbdcb;
+  --color-blue-50: #eff1fa;
+  --color-blue-100: #d7e0ff;
+  --color-blue-850: #1e213f;
+  --color-blue-900: #161932;
+  --color-blue-950: #14172e;
+}
+
+:root {
+  --app-font: "Kumbh Sans", sans-serif;
+  --app-color: var(--color-red-400);
+}

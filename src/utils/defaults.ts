@@ -1,0 +1,11 @@
+import type { Settings } from "../types/types";
+
+export const DEFAULT_SETTINGS: Settings = {
+  color: "red-400",
+  font: "Kumbh Sans",
+  durations: {
+    pomodoro: 25,
+    shortBreak: 5,
+    longBreak: 15,
+  },
+};
