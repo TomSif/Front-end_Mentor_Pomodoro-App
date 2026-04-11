@@ -1,7 +1,11 @@
+import { SettingsProvider } from "./context/SettingsProvider";
+
 function App() {
   return (
     <>
-      <h1 className="text-white bg-black">TEST TAILWINDCSS</h1>
+      <SettingsProvider>
+        <h1 className="text-white bg-black">TEST TAILWINDCSS</h1>
+      </SettingsProvider>
     </>
   );
 }

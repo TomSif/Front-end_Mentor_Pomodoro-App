@@ -2,7 +2,7 @@ import type { Settings } from "../types/types";
 
 export const DEFAULT_SETTINGS: Settings = {
   color: "red-400",
-  font: "Kumbh Sans",
+  font: "kumbh-sans",
   durations: {
     pomodoro: 25,
     shortBreak: 5,
