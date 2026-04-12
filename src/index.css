@@ -199,3 +199,10 @@
   line-height: 133%;
   letter-spacing: 0em;
 }
+/* Custom css */
+.timer-bg {
+  background: linear-gradient(to left, #2e325a, #0e112a);
+  box-shadow: 0rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
+  box-shadow: -3.125rem -3.125rem 6.25rem 0 #272c5a;
+  box-shadow: 3.125rem 3.125rem 6.25rem 0 #121530;
+}
