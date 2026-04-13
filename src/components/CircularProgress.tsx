@@ -6,7 +6,7 @@ interface CircularProgressProps {
 
 function CircularProgress({ timeLeft, totalDuration }: CircularProgressProps) {
   const circumference = 2 * Math.PI * 120;
-  const offset = circumference * (1 - timeLeft / totalDuration);
+  const offset = (timeLeft / totalDuration) * circumference;
   return (
     <svg className="absolute w-full h-full z-30" viewBox="0 0 300 300">
       <circle
@@ -18,7 +18,7 @@ function CircularProgress({ timeLeft, totalDuration }: CircularProgressProps) {
         strokeDashoffset={offset}
         strokeDasharray={circumference}
         strokeWidth={8}
-        transform="rotate(-90 150 150) scale(1 -1) translate(0 -300) "
+        transform="rotate(-90 150 150)  "
         style={{ transition: "stroke-dashoffset 1s linear" }}
       />
     </svg>
