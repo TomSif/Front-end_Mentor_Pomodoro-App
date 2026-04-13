@@ -206,3 +206,6 @@
   box-shadow: -3.125rem -3.125rem 6.25rem 0 #272c5a;
   box-shadow: 3.125rem 3.125rem 6.25rem 0 #121530;
 }
+dialog:not([open]) {
+  display: none;
+}

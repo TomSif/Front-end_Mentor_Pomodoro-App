@@ -1,7 +1,8 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import type { TimerMode } from "../types/types";
 import useSettings from "../hooks/useSettings";
 import CircularProgress from "./CircularProgress";
+import SettingsModal from "./SettingsModal";
 
 // 1. Le type de l'état
 interface TimerState {
@@ -62,6 +63,8 @@ function formatTime(seconds: number): string {
 }
 
 function Timer() {
+  //states
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   // hook
   const { settings } = useSettings();
   //declare initial state
@@ -97,26 +100,47 @@ function Timer() {
     }
   }, [state.timeLeft, state.mode, settings.durations]);
 
+  //function to close Dialog Modal
+  function onClose() {
+    return setIsOpen(false);
+  }
+
   return (
-    <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">
-      <div className="timer-container w-67 h-67 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
-        <CircularProgress
-          timeLeft={state.timeLeft}
-          totalDuration={settings.durations[state.mode] * 60}
-        />
-        <div className="timer-display flex flex-col items-center z-50 ">
-          <div className="display text-preset-1-mobile md:text-preset-1">
-            {formatTime(state.timeLeft)}
+    <>
+      <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">
+        <SettingsModal isOpen={isOpen} onClose={onClose} />
+        <div className="timer-container w-67 h-67 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
+          <CircularProgress
+            timeLeft={state.timeLeft}
+            totalDuration={settings.durations[state.mode] * 60}
+          />
+          <div className="timer-display flex flex-col items-center z-50 ">
+            <div className="display text-preset-1-mobile md:text-preset-1">
+              {formatTime(state.timeLeft)}
+            </div>
+            <button
+              onClick={() => dispatch(handleButtonClick(state.status))}
+              className="text-preset-2-mobile md:text-preset-2"
+            >
+              {handleButtonClick(state.status).type}
+            </button>
           </div>
-          <button
-            onClick={() => dispatch(handleButtonClick(state.status))}
-            className="text-preset-2-mobile md:text-preset-2"
-          >
-            {handleButtonClick(state.status).type}
-          </button>
         </div>
-      </div>
-    </main>
+      </main>
+      <footer className=" w-full flex items-center mt-20">
+        <button
+          aria-label="open the settings page"
+          aria-controls="settingsModal"
+          onClick={() => {
+            setIsOpen((isOpen) => !isOpen);
+          }}
+          type="button"
+          className="w-7 h-7 mx-auto"
+        >
+          <img src="/assets/icon-settings.svg" alt="" />
+        </button>
+      </footer>
+    </>
   );
 }
 
