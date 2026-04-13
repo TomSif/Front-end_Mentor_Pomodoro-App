@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import type { TimerMode } from "../types/types";
 import useSettings from "../hooks/useSettings";
 
@@ -15,6 +15,7 @@ type TimerAction =
   | { type: "PAUSE" }
   | { type: "RESTART" }
   | { type: "TICK" }
+  | { type: "COMPLETE"; payload: { duration: number } }
   | { type: "SET_MODE"; payload: { mode: TimerMode; duration: number } };
 
 // 3. Le reducer
@@ -38,10 +39,25 @@ function timerReducer(state: TimerState, action: TimerAction): TimerState {
         mode: action.payload.mode,
         timeLeft: action.payload.duration,
       };
+    case "COMPLETE":
+      return {
+        ...state,
+        status: "idle",
+        timeLeft: action.payload.duration,
+      };
 
     default:
       return state;
   }
+}
+
+//function to handle fomatTime like this MM:SS
+function formatTime(seconds: number): string {
+  const minutesLeft = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
+  const secondsLeft = (seconds % 60).toString().padStart(2, "0");
+  return `${minutesLeft}:${secondsLeft}`;
 }
 
 function Timer() {
@@ -63,12 +79,29 @@ function Timer() {
     return { type: "RESTART" };
   }
 
+  //useEffect Timer dispatch the tick
+  useEffect(() => {
+    if (state.status !== "running") return;
+    const id = setInterval(() => dispatch({ type: "TICK" }), 1000);
+    return () => clearInterval(id);
+  }, [state.status]);
+
+  //useEffet TimeLeft === 0
+  useEffect(() => {
+    if (state.timeLeft === 0) {
+      dispatch({
+        type: "COMPLETE",
+        payload: { duration: settings.durations[state.mode] },
+      });
+    }
+  }, [state.timeLeft, state.mode, settings.durations]);
+
   return (
     <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">
       <div className="timer-container w-66 h-66 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center">
         <div className="timer-display flex flex-col items-center ">
           <div className="display text-preset-1-mobile md:text-preset-1">
-            {state.timeLeft}
+            {formatTime(state.timeLeft)}
           </div>
           <button
             onClick={() => dispatch(handleButtonClick(state.status))}
