@@ -67,7 +67,7 @@ function Timer() {
   //declare initial state
   const initialState: TimerState = {
     mode: "pomodoro",
-    timeLeft: settings.durations["pomodoro"],
+    timeLeft: settings.durations["pomodoro"] * 60,
     status: "idle",
   };
   // plug useReducer
@@ -92,7 +92,7 @@ function Timer() {
     if (state.timeLeft === 0) {
       dispatch({
         type: "COMPLETE",
-        payload: { duration: settings.durations[state.mode] },
+        payload: { duration: settings.durations[state.mode] * 60 },
       });
     }
   }, [state.timeLeft, state.mode, settings.durations]);
@@ -102,7 +102,7 @@ function Timer() {
       <div className="timer-container w-67 h-67 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
         <CircularProgress
           timeLeft={state.timeLeft}
-          totalDuration={settings.durations[state.mode]}
+          totalDuration={settings.durations[state.mode] * 60}
         />
         <div className="timer-display flex flex-col items-center z-50 ">
           <div className="display text-preset-1-mobile md:text-preset-1">
