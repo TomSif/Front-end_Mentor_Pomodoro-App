@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from "react";
 import type { TimerMode } from "../types/types";
 import useSettings from "../hooks/useSettings";
+import CircularProgress from "./CircularProgress";
 
 // 1. Le type de l'état
 interface TimerState {
@@ -98,8 +99,12 @@ function Timer() {
 
   return (
     <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">
-      <div className="timer-container w-66 h-66 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center">
-        <div className="timer-display flex flex-col items-center ">
+      <div className="timer-container w-67 h-67 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
+        <CircularProgress
+          timeLeft={state.timeLeft}
+          totalDuration={settings.durations[state.mode]}
+        />
+        <div className="timer-display flex flex-col items-center z-50 ">
           <div className="display text-preset-1-mobile md:text-preset-1">
             {formatTime(state.timeLeft)}
           </div>
