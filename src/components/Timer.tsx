@@ -104,7 +104,6 @@ function Timer() {
   function onClose() {
     return setIsOpen(false);
   }
-
   return (
     <>
       <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">

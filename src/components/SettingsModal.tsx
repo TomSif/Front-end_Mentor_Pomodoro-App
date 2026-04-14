@@ -1,12 +1,20 @@
-import { useRef, useEffect } from "react";
-//1* Interface
+import { useRef, useEffect, useState } from "react";
+import useSettings from "../hooks/useSettings";
+import type { AppColor, AppFont, Settings } from "../types/types";
+import { cn } from "../lib/utils";
+// Interface
 interface SettingsModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+//SettingsModal Components
 function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
+  //hook useSettings
+  const { settings, setSettings } = useSettings();
+  //useState
+  const [draftSettings, setDraftSettings] = useState<Settings>(settings);
+  //useRef
   const dialogRef = useRef<HTMLDialogElement>(null);
-
   //useEffect to handle show/close Modal
   useEffect(() => {
     if (isOpen) {
@@ -22,7 +30,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       ref={dialogRef}
       id="settingsModal"
     >
-      <div className="modal-header flex justify-between pb-6 border-b-2 border-b-grey-200">
+      <section className="modal-header flex justify-between pb-6 border-b-2 border-b-grey-200">
         <h2 className="text-preset-1 text-blue-900">Settings</h2>
         <button
           aria-label="close the settings page"
@@ -32,7 +40,249 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         >
           <img src="/assets/icon-close.svg" alt="" />
         </button>
-      </div>
+      </section>
+      <form className="flex flex-col w-full py-6" action="">
+        <fieldset className="input-number flex flex-col w-full gap-2 pb-6">
+          <legend className="text-preset-1 text-blue-850 text-center pb-6">
+            TIME (MINUTES)
+          </legend>
+          <div className="flex justify-between items-center">
+            <label
+              className="text-preset-4 text-blue-850/40"
+              htmlFor="pomodoro"
+            >
+              pomodoro
+            </label>
+            <input
+              className="w-35 h-10 text-blue-850 bg-blue-50 rounded-2xl p-2.75 hover:border-[#979797] border-2 border-transparent"
+              type="number"
+              name="pomodoro"
+              id="pomodoro"
+              value={Number(draftSettings.durations.pomodoro)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const value = Number(e.target.value);
+                const updated = {
+                  ...draftSettings,
+                  durations: { ...draftSettings.durations, pomodoro: value },
+                };
+                return setDraftSettings(updated);
+              }}
+            />
+          </div>
+          <div className="flex justify-between items-center">
+            <label
+              className="text-preset-4 text-blue-850/40"
+              htmlFor="shortBreak"
+            >
+              short break
+            </label>
+            <input
+              className="w-35 h-10 text-blue-850 bg-blue-50 rounded-2xl p-2.75 hover:border-[#979797] border-2 border-transparent"
+              type="number"
+              name="shortBreak"
+              id="shortBreak"
+              value={Number(draftSettings.durations.shortBreak)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const value = Number(e.target.value);
+                const updated = {
+                  ...draftSettings,
+                  durations: {
+                    ...draftSettings.durations,
+                    shortBreak: value,
+                  },
+                };
+                return setDraftSettings(updated);
+              }}
+            />
+          </div>
+          <div className="flex justify-between items-center">
+            <label
+              className="text-preset-4 text-blue-850/40"
+              htmlFor="longBreak"
+            >
+              long break
+            </label>
+            <input
+              className="w-35 h-10 text-blue-850 bg-blue-50 rounded-2xl p-2.75 hover:border-[#979797] border-2 border-transparent"
+              type="number"
+              name="longBreak"
+              id="longBreak"
+              value={Number(draftSettings.durations.longBreak)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const value = Number(e.target.value);
+                const updated = {
+                  ...draftSettings,
+                  durations: {
+                    ...draftSettings.durations,
+                    longBreak: value,
+                  },
+                };
+                return setDraftSettings(updated);
+              }}
+            />
+          </div>
+        </fieldset>
+        <fieldset className="fonts-radio-buttons w-full text-center py-6 border-b-2 border-grey-200">
+          <h4 className="text-preset-1 text-blue-900 text-center pb-4">FONT</h4>
+          <div className="fonts-radios-container flex gap-4 w-38 mx-auto">
+            <label
+              className={cn(
+                "text-preset-2 w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                "has-checked:bg-black has-checked:text-white ",
+              )}
+              htmlFor="font1"
+            >
+              <input
+                className="sr-only font1"
+                type="radio"
+                name="font"
+                id="font1"
+                value="kumbh-sans"
+                checked={draftSettings.font === "kumbh-sans"}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setDraftSettings({
+                    ...draftSettings,
+                    font: e.target.value as AppFont,
+                  });
+                }}
+              />
+              Aa
+            </label>
+            <label
+              className={cn(
+                "text-preset-2 w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                "has-checked:bg-black has-checked:text-white ",
+              )}
+              htmlFor="font2"
+            >
+              <input
+                className="sr-only"
+                type="radio"
+                name="font"
+                id="font2"
+                value="space-mono"
+                checked={draftSettings.font === "space-mono"}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setDraftSettings({
+                    ...draftSettings,
+                    font: e.target.value as AppFont,
+                  });
+                }}
+              />
+              Aa
+            </label>
+            <label
+              className={cn(
+                "text-preset-2 w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                "has-checked:bg-black has-checked:text-white ",
+              )}
+              htmlFor="font3"
+            >
+              <input
+                className="sr-only"
+                type="radio"
+                name="font"
+                id="font3"
+                value="roboto-slab"
+                checked={draftSettings.font === "roboto-slab"}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setDraftSettings({
+                    ...draftSettings,
+                    font: e.target.value as AppFont,
+                  });
+                }}
+              />
+              Aa
+            </label>
+          </div>
+        </fieldset>
+        <fieldset className="colors-radio-buttons w-full text-center py-6 pb-8">
+          <h4 className="text-preset-1 text-blue-900 text-center pb-4">
+            COLOR
+          </h4>
+          <div className="colors-radios-container flex gap-4 w-38 mx-auto">
+            <label
+              className={cn(
+                "text-preset-2 w-10 h-10 flex items-center justify-center bg-red-400 text-transparent rounded-full",
+                "has-checked:text-black",
+              )}
+              htmlFor="color1"
+            >
+              <input
+                className="sr-only"
+                type="radio"
+                name="color"
+                id="color1"
+                value="red-400"
+                checked={draftSettings.color === "red-400"}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setDraftSettings({
+                    ...draftSettings,
+                    color: e.target.value as AppColor,
+                  });
+                }}
+              />
+              &#10003;
+            </label>
+            <label
+              className={cn(
+                "text-preset-2 w-10 h-10 flex items-center justify-center bg-cyan-300 text-transparent rounded-full",
+                "has-checked:text-black ",
+              )}
+              htmlFor="color2"
+            >
+              <input
+                className="sr-only"
+                type="radio"
+                name="color"
+                id="color2"
+                value="cyan-300"
+                checked={draftSettings.color === "cyan-300"}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setDraftSettings({
+                    ...draftSettings,
+                    color: e.target.value as AppColor,
+                  });
+                }}
+              />
+              &#10003;
+            </label>
+            <label
+              className={cn(
+                "text-preset-2 w-10 h-10 flex items-center justify-center bg-purple-400 text-transparent rounded-full ",
+                "has-checked:text-black",
+              )}
+              htmlFor="color3"
+            >
+              <input
+                className="sr-only"
+                type="radio"
+                name="color"
+                id="color3"
+                value="purple-400"
+                checked={draftSettings.color === "purple-400"}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setDraftSettings({
+                    ...draftSettings,
+                    color: e.target.value as AppColor,
+                  });
+                }}
+              />
+              &#10003;
+            </label>
+          </div>
+        </fieldset>
+        <button
+          type="button"
+          onClick={() => {
+            setSettings(draftSettings);
+            onClose();
+          }}
+          className="bg-red-400 text-preset-2 text-white w-35 h-13 rounded-3xl mx-auto hover:bg-red-400/80"
+        >
+          APPLY
+        </button>
+      </form>
     </dialog>
   );
 }

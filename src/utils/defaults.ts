@@ -4,7 +4,7 @@ export const DEFAULT_SETTINGS: Settings = {
   color: "red-400",
   font: "kumbh-sans",
   durations: {
-    pomodoro: 1,
+    pomodoro: 25,
     shortBreak: 5,
     longBreak: 15,
   },
