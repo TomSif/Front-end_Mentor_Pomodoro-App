@@ -43,7 +43,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       </section>
       <form className="flex flex-col w-full py-6" action="">
         <fieldset className="input-number flex flex-col w-full gap-2 pb-6">
-          <legend className="text-preset-1 text-blue-850 text-center pb-6">
+          <legend className="text-preset-3 text-blue-850 text-center pb-6">
             TIME (MINUTES)
           </legend>
           <div className="flex justify-between items-center">
@@ -123,7 +123,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
         </fieldset>
         <fieldset className="fonts-radio-buttons w-full text-center py-6 border-b-2 border-grey-200">
-          <h4 className="text-preset-1 text-blue-900 text-center pb-4">FONT</h4>
+          <h4 className="text-preset-3 text-blue-900 text-center pb-4">FONT</h4>
           <div className="fonts-radios-container flex gap-4 w-38 mx-auto">
             <label
               className={cn(
@@ -197,7 +197,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
         </fieldset>
         <fieldset className="colors-radio-buttons w-full text-center py-6 pb-8">
-          <h4 className="text-preset-1 text-blue-900 text-center pb-4">
+          <h4 className="text-preset-3 text-blue-900 text-center pb-4">
             COLOR
           </h4>
           <div className="colors-radios-container flex gap-4 w-38 mx-auto">
@@ -274,11 +274,21 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         </fieldset>
         <button
           type="button"
+          data-font={draftSettings.font}
           onClick={() => {
             setSettings(draftSettings);
             onClose();
           }}
-          className="bg-red-400 text-preset-2 text-white w-35 h-13 rounded-3xl mx-auto hover:bg-red-400/80"
+          className={`data-font bg-(--app-color) text-preset-2 text-white w-35 h-13 rounded-3xl mx-auto hover:bg-(--app-color) `}
+          style={{
+            background: `var(--color-${draftSettings.color})`,
+            fontFamily:
+              draftSettings.font === "kumbh-sans"
+                ? "Kumbh Sans"
+                : draftSettings.font === "roboto-slab"
+                  ? "Roboto Slab"
+                  : "Space Mono",
+          }}
         >
           APPLY
         </button>

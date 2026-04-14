@@ -74,7 +74,7 @@
 [data-font="kumbh-sans"] .text-preset-1 {
   font-family: "Kumbh Sans";
   font-weight: 700;
-  font-size: 6.25rem;
+  font-size: 1.75rem;
   line-height: 125%;
   letter-spacing: -0.001em;
 }
@@ -90,7 +90,7 @@
   font-weight: 700;
   font-size: 1rem;
   line-height: 125%;
-  letter-spacing: 0.9375em;
+  letter-spacing: 0em;
 }
 [data-font="kumbh-sans"] .text-preset-2-mobile {
   font-family: "Kumbh Sans";
@@ -117,7 +117,7 @@
 [data-font="roboto-slab"] .text-preset-1 {
   font-family: "Roboto Slab";
   font-weight: 700;
-  font-size: 6.25rem;
+  font-size: 1.75rem;
   line-height: 130%;
   letter-spacing: 0em;
 }
@@ -133,7 +133,7 @@
   font-weight: 700;
   font-size: 1rem;
   line-height: 125%;
-  letter-spacing: 0.9375em;
+  letter-spacing: 0em;
 }
 [data-font="roboto-slab"] .text-preset-2-mobile {
   font-family: "Roboto Slab";
@@ -160,7 +160,7 @@
 [data-font="space-mono"] .text-preset-1 {
   font-family: "Space Mono";
   font-weight: 400;
-  font-size: 6.25rem;
+  font-size: 1.75rem;
   line-height: 150%;
   letter-spacing: -0.1em;
 }
@@ -176,7 +176,7 @@
   font-weight: 700;
   font-size: 1rem;
   line-height: 150%;
-  letter-spacing: 0.9375em;
+  letter-spacing: 0em;
 }
 [data-font="space-mono"] .text-preset-2-mobile {
   font-family: "Space Mono";

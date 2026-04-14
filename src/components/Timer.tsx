@@ -100,6 +100,8 @@ function Timer() {
     }
   }, [state.timeLeft, state.mode, settings.durations]);
 
+  //useEffect to update settings
+
   //function to close Dialog Modal
   function onClose() {
     return setIsOpen(false);
@@ -108,7 +110,7 @@ function Timer() {
     <>
       <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">
         <SettingsModal isOpen={isOpen} onClose={onClose} />
-        <div className="timer-container w-67 h-67 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
+        <div className="timer-container w-64 h-64 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
           <CircularProgress
             timeLeft={state.timeLeft}
             totalDuration={settings.durations[state.mode] * 60}

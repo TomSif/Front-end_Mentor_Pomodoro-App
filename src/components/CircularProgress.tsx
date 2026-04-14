@@ -12,7 +12,7 @@ function CircularProgress({ timeLeft, totalDuration }: CircularProgressProps) {
       <circle
         cx={150}
         cy={150}
-        r={120}
+        r={135}
         fill="none"
         stroke="var(--app-color)"
         strokeDashoffset={offset}
