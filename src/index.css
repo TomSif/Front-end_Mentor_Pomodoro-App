@@ -100,7 +100,14 @@
   line-height: 125%;
   letter-spacing: 0em;
 }
-[data-font="kumbh-sans"] .text-preset-2-settings {
+.text-preset-4-settings {
+  font-family: "Kumbh Sans";
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 125%;
+  letter-spacing: 0em;
+}
+.text-preset-2-settings {
   font-family: "Kumbh Sans";
   font-weight: 700;
   font-size: 0.875rem;
@@ -112,7 +119,7 @@
   font-weight: 700;
   font-size: 0.875rem;
   line-height: 125%;
-  letter-spacing: 0em;
+  letter-spacing: 0.38em;
 }
 /*Font 2*/
 [data-font="roboto-slab"] .text-preset-1 {
