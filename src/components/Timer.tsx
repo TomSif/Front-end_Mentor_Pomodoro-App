@@ -18,7 +18,8 @@ type TimerAction =
   | { type: "RESTART" }
   | { type: "TICK" }
   | { type: "COMPLETE"; payload: { duration: number } }
-  | { type: "SET_MODE"; payload: { mode: TimerMode; duration: number } };
+  | { type: "SET_MODE"; payload: { mode: TimerMode; duration: number } }
+  | { type: "RESET_DURATIONS"; payload: { duration: number } };
 
 // 3. Le reducer
 function timerReducer(state: TimerState, action: TimerAction): TimerState {
@@ -45,6 +46,11 @@ function timerReducer(state: TimerState, action: TimerAction): TimerState {
       return {
         ...state,
         status: "idle",
+        timeLeft: action.payload.duration,
+      };
+    case "RESET_DURATIONS":
+      return {
+        ...state,
         timeLeft: action.payload.duration,
       };
 
@@ -100,7 +106,14 @@ function Timer() {
     }
   }, [state.timeLeft, state.mode, settings.durations]);
 
-  //useEffect to update settings
+  // useEffect to update settings
+  const stateMode = settings.durations[state.mode];
+  useEffect(() => {
+    dispatch({
+      type: "RESET_DURATIONS",
+      payload: { duration: stateMode * 60 },
+    });
+  }, [stateMode]);
 
   //function to close Dialog Modal
   function onClose() {
