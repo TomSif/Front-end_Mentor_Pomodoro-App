@@ -128,8 +128,8 @@ function Timer() {
             timeLeft={state.timeLeft}
             totalDuration={settings.durations[state.mode] * 60}
           />
-          <div className="timer-display flex flex-col items-center z-50 ">
-            <div className="display text-preset-1-mobile md:text-preset-1">
+          <div className="timer-display flex flex-col items-center z-50 w-53">
+            <div className="display text-preset-1-mobile md:text-preset-1 min-w-53 wflex items-center justify-between">
               {formatTime(state.timeLeft)}
             </div>
             <button
