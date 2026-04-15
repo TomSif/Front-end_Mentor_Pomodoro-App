@@ -26,7 +26,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
   return (
     <dialog
-      className="w-[86vw] max-w-135  bg-white mx-auto rounded-3xl flex flex-col p-6 md:p-9 z-500 relative overflow-visible my-auto"
+      className="w-[86vw] max-w-135  bg-white mx-auto rounded-3xl flex flex-col p-6 md:p-9 z-500 relative overflow-visible my-auto backdrop:bg-blue-850"
       ref={dialogRef}
       id="settingsModal"
     >

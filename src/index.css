@@ -203,7 +203,7 @@ dialog:not([open]) {
   cursor: pointer;
   transform: scale(1.05);
 }
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .header-title {
     font-size: 2rem;
   }

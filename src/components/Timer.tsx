@@ -122,8 +122,8 @@ function Timer() {
   }
   return (
     <>
-      <header className="w-full px-6 ">
-        <h1 className="header-title mx-auto text-white text-center mb-10">
+      <header className="w-full  max-w-96 ">
+        <h1 className="header-title mx-auto text-white text-center mb-10 md:mb-11.5 ">
           pomodoro
         </h1>
         <ModeSelector
@@ -136,15 +136,15 @@ function Timer() {
           mode={state.mode}
         />
       </header>
-      <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">
+      <main className="timer-bg w-70 h-70 xl:w-110 xl:h-110 rounded-full flex flex-col items-center justify-center mt-11.5 md:mt-27 xl:mt-9">
         <SettingsModal isOpen={isOpen} onClose={onClose} />
-        <div className="timer-container w-64 h-64 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
+        <div className="timer-container w-64 h-64  xl:w-100 xl:h-100 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
           <CircularProgress
             timeLeft={state.timeLeft}
             totalDuration={settings.durations[state.mode] * 60}
           />
-          <div className="timer-display flex flex-col items-center z-50 w-53">
-            <div className="display text-preset-1 min-w-53 wflex items-center justify-between">
+          <div className="timer-display flex flex-col items-center justify-start z-50 w-53 md:w-50">
+            <div className="display text-preset-1  min-w-53 wflex items-center justify-between">
               {formatTime(state.timeLeft)}
             </div>
             <button
@@ -156,7 +156,7 @@ function Timer() {
           </div>
         </div>
       </main>
-      <footer className=" w-full flex items-center mt-20">
+      <footer className=" w-full flex items-center mt-20 md:mt-36 xl:mt-16">
         <button
           aria-label="open the settings page"
           aria-controls="settingsModal"
