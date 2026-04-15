@@ -1,18 +1,23 @@
-import { useState } from "react";
 import type { TimerMode } from "../types/types";
 import ModeButton from "./ModeButton";
 
-const MODES: TimerMode[] = ["pomodoro", "shortBreak", "longBreak"];
-function ModeSelector() {
-  const [mode, setMode] = useState<TimerMode>("pomodoro");
+interface TimerModeProps {
+  onModeChange: (m: TimerMode) => void;
+  mode: TimerMode;
+}
+
+const MODES: TimerMode[] = ["pomodoro", "short break", "long break"];
+function ModeSelector({ onModeChange, mode }: TimerModeProps) {
   return (
-    <ul className="flex max-w-95 w-full bg-blue-900 rounded-full items-center justify-between p-1.5 mx-auto">
+    <ul className="flex  w-auto bg-blue-900 rounded-full items-center justify-between p-1.5 mx-auto">
       {MODES.map((modeItem, index) => {
         return (
           <li key={index}>
             <ModeButton
               mode={modeItem}
-              setMode={setMode}
+              setMode={() => {
+                onModeChange(modeItem);
+              }}
               isActive={modeItem === mode}
             />
           </li>

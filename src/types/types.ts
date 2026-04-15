@@ -1,4 +1,4 @@
-export type TimerMode = "pomodoro" | "shortBreak" | "longBreak";
+export type TimerMode = "pomodoro" | "short break" | "long break";
 
 export type AppColor = "red-400" | "cyan-300" | "purple-400";
 

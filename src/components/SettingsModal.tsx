@@ -31,7 +31,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       id="settingsModal"
     >
       <section className="modal-header flex justify-between pb-6 border-b-2 border-b-grey-200">
-        <h2 className="text-preset-1 text-blue-900">Settings</h2>
+        <h2 className="text-preset-1-settings text-blue-900">Settings</h2>
         <button
           aria-label="close the settings page"
           type="button"
@@ -48,7 +48,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </legend>
           <div className="flex justify-between items-center">
             <label
-              className="text-preset-4 text-blue-850/40"
+              className="text-preset-4-settings text-blue-850/40"
               htmlFor="pomodoro"
             >
               pomodoro
@@ -71,7 +71,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
           <div className="flex justify-between items-center">
             <label
-              className="text-preset-4 text-blue-850/40"
+              className="text-preset-4-settings text-blue-850/40"
               htmlFor="shortBreak"
             >
               short break
@@ -81,14 +81,14 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               type="number"
               name="shortBreak"
               id="shortBreak"
-              value={Number(draftSettings.durations.shortBreak)}
+              value={Number(draftSettings.durations["short break"])}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 const value = Number(e.target.value);
                 const updated = {
                   ...draftSettings,
                   durations: {
                     ...draftSettings.durations,
-                    shortBreak: value,
+                    "short break": value,
                   },
                 };
                 return setDraftSettings(updated);
@@ -97,7 +97,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
           <div className="flex justify-between items-center">
             <label
-              className="text-preset-4 text-blue-850/40"
+              className="text-preset-4-settings text-blue-850/40"
               htmlFor="longBreak"
             >
               long break
@@ -107,14 +107,14 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               type="number"
               name="longBreak"
               id="longBreak"
-              value={Number(draftSettings.durations.longBreak)}
+              value={Number(draftSettings.durations["long break"])}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 const value = Number(e.target.value);
                 const updated = {
                   ...draftSettings,
                   durations: {
                     ...draftSettings.durations,
-                    longBreak: value,
+                    "long break": value,
                   },
                 };
                 return setDraftSettings(updated);
@@ -127,7 +127,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           <div className="fonts-radios-container flex gap-4 w-38 mx-auto">
             <label
               className={cn(
-                "text-preset-2 w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                "text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                 "has-checked:bg-black has-checked:text-white ",
               )}
               htmlFor="font1"
@@ -150,7 +150,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             </label>
             <label
               className={cn(
-                "text-preset-2 w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                "text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                 "has-checked:bg-black has-checked:text-white ",
               )}
               htmlFor="font2"
@@ -173,7 +173,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             </label>
             <label
               className={cn(
-                "text-preset-2 w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                "text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                 "has-checked:bg-black has-checked:text-white ",
               )}
               htmlFor="font3"
@@ -279,7 +279,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             setSettings(draftSettings);
             onClose();
           }}
-          className={`data-font bg-(--app-color) text-preset-2 text-white w-35 h-13 rounded-3xl mx-auto hover:bg-(--app-color) `}
+          className={`data-font bg-(--app-color) text-preset-2-settings text-white w-35 h-13 rounded-3xl mx-auto hover:bg-(--app-color) `}
           style={{
             background: `var(--color-${draftSettings.color})`,
             fontFamily:

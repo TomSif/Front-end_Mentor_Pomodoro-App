@@ -1,5 +1,6 @@
 import { useReducer, useEffect, useState } from "react";
 import type { TimerMode } from "../types/types";
+import ModeSelector from "./ModeSelector";
 import useSettings from "../hooks/useSettings";
 import CircularProgress from "./CircularProgress";
 import SettingsModal from "./SettingsModal";
@@ -121,6 +122,20 @@ function Timer() {
   }
   return (
     <>
+      <header className="w-full px-6 ">
+        <h1 className="header-title mx-auto text-white text-center mb-10">
+          pomodoro
+        </h1>
+        <ModeSelector
+          onModeChange={(mode) =>
+            dispatch({
+              type: "SET_MODE",
+              payload: { mode, duration: settings.durations[mode] * 60 },
+            })
+          }
+          mode={state.mode}
+        />
+      </header>
       <main className="timer-bg w-70 h-70 rounded-full flex flex-col items-center justify-center mt-11.5">
         <SettingsModal isOpen={isOpen} onClose={onClose} />
         <div className="timer-container w-64 h-64 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
@@ -129,12 +144,12 @@ function Timer() {
             totalDuration={settings.durations[state.mode] * 60}
           />
           <div className="timer-display flex flex-col items-center z-50 w-53">
-            <div className="display text-preset-1-mobile md:text-preset-1 min-w-53 wflex items-center justify-between">
+            <div className="display text-preset-1 min-w-53 wflex items-center justify-between">
               {formatTime(state.timeLeft)}
             </div>
             <button
               onClick={() => dispatch(handleButtonClick(state.status))}
-              className="text-preset-2-mobile md:text-preset-2"
+              className="text-preset-2 hover:text-(--app-color)"
             >
               {handleButtonClick(state.status).type}
             </button>
@@ -149,7 +164,7 @@ function Timer() {
             setIsOpen((isOpen) => !isOpen);
           }}
           type="button"
-          className="w-7 h-7 mx-auto"
+          className="button-settings w-7 h-7 mx-auto transition-all ease-in-out 0.2s"
         >
           <img src="/assets/icon-settings.svg" alt="" />
         </button>

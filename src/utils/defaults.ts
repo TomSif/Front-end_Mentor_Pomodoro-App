@@ -5,7 +5,7 @@ export const DEFAULT_SETTINGS: Settings = {
   font: "kumbh-sans",
   durations: {
     pomodoro: 25,
-    shortBreak: 5,
-    longBreak: 15,
+    "short break": 5,
+    "long break": 15,
   },
 };
