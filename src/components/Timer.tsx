@@ -68,7 +68,7 @@ function formatTime(seconds: number): string {
   const secondsLeft = (seconds % 60).toString().padStart(2, "0");
   return `${minutesLeft}:${secondsLeft}`;
 }
-
+//Timùer Component
 function Timer() {
   //states
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -97,24 +97,39 @@ function Timer() {
     return () => clearInterval(id);
   }, [state.status]);
 
+  // APi call for notifications
+  useEffect(() => {
+    async function getPermission() {
+      const permission = await Notification.requestPermission();
+      return permission;
+    }
+    getPermission();
+  }, []);
+
+  //actual mode duration
+  const currentDuration = settings.durations[state.mode];
   //useEffet TimeLeft === 0
   useEffect(() => {
     if (state.timeLeft === 0) {
+      if (Notification.permission === "granted") {
+        new Notification("Timer", {
+          body: `${currentDuration} minutes done. Great job! Take a break.`,
+        });
+      }
       dispatch({
         type: "COMPLETE",
         payload: { duration: settings.durations[state.mode] * 60 },
       });
     }
-  }, [state.timeLeft, state.mode, settings.durations]);
+  }, [state.timeLeft, state.mode, settings.durations, currentDuration]);
 
   // useEffect to update settings
-  const stateMode = settings.durations[state.mode];
   useEffect(() => {
     dispatch({
       type: "RESET_DURATIONS",
-      payload: { duration: stateMode * 60 },
+      payload: { duration: currentDuration * 60 },
     });
-  }, [stateMode]);
+  }, [currentDuration]);
 
   //function to close Dialog Modal
   function onClose() {
@@ -144,7 +159,7 @@ function Timer() {
             totalDuration={settings.durations[state.mode] * 60}
           />
           <div className="timer-display flex flex-col items-center justify-start z-50 w-53 md:w-50">
-            <div className="display text-preset-1  min-w-53 wflex items-center justify-between">
+            <div className="display text-preset-1  min-w-53 flex items-center justify-between">
               {formatTime(state.timeLeft)}
             </div>
             <button
