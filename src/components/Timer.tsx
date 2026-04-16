@@ -181,7 +181,7 @@ function Timer() {
             setIsOpen((isOpen) => !isOpen);
           }}
           type="button"
-          className="button-settings w-7 h-7 mx-auto transition-all ease-in-out 0.2s"
+          className="button-settings w-7 h-7 mx-auto transition-all ease-in-out 0.2s "
         >
           <img src="/assets/icon-settings.svg" alt="" />
         </button>

@@ -238,6 +238,36 @@ dialog:not([open]) {
   opacity: 1;
 }
 
+/*buttons apply */
+.button-apply {
+  transition: transform 0.25s ease-in-out;
+}
+
+.button-apply:hover {
+  transform: translateY(-1.5px);
+  filter: saturate(1.5);
+  color: var(--color-blue-950);
+}
+
+.button-apply:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+/*animtaion modal */
+dialog[open] {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease-in-out;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+}
 @media (min-width: 1280px) {
   .header-title {
     font-size: 2rem;

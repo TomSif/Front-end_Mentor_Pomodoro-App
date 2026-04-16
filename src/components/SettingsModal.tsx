@@ -335,7 +335,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             setSettings(draftSettings);
             onClose();
           }}
-          className={`data-font bg-(--app-color) text-preset-2-settings text-white w-35 h-13 rounded-3xl  hover:bg-(--app-color) absolute bottom-0 left-1/2 -translate-x-1/2 -my-6 z-510`}
+          className={`button-apply data-font bg-(--app-color) text-preset-2-settings text-white w-35 h-13 rounded-3xl  hover:bg-(--app-color) absolute bottom-0 left-1/2 -translate-x-1/2 -my-6 z-510`}
           style={{
             background: `var(--color-${draftSettings.color})`,
             fontFamily:
