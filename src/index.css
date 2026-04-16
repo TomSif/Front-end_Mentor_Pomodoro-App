@@ -203,6 +203,41 @@ dialog:not([open]) {
   cursor: pointer;
   transform: scale(1.05);
 }
+
+.fonts-radio {
+  position: relative;
+}
+
+/* cercle */
+.fonts-radio::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid var(--color-blue-50);
+
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* hover */
+.fonts-radio:hover::after {
+  opacity: 1;
+}
+
+/* focus clavier */
+.fonts-radio:focus-within::after {
+  opacity: 1;
+}
+
+/* active click */
+.fonts-radio:active::after {
+  opacity: 1;
+}
+
 @media (min-width: 1280px) {
   .header-title {
     font-size: 2rem;

@@ -133,20 +133,28 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             </h4>
             <div className="fonts-radios-container flex gap-4 w-38 mx-auto md:mx-0">
               <label
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === " ") {
+                    e.preventDefault(); // no scroll
+                    e.currentTarget.click(); // simulate click on label → active radio via htmlFor
+                  }
+                }}
                 className={cn(
-                  "text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                  "fonts-radio focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full ",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
                 htmlFor="font1"
               >
                 <input
-                  className="sr-only font1"
+                  className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full "
                   type="radio"
                   name="font"
                   id="font1"
                   value="kumbh-sans"
                   checked={draftSettings.font === "kumbh-sans"}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    console.log("onChange fired", e.target.value);
                     setDraftSettings({
                       ...draftSettings,
                       font: e.target.value as AppFont,
@@ -156,14 +164,21 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 Aa
               </label>
               <label
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === " ") {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
                 className={cn(
-                  "text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                  "fonts-radio focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
                 htmlFor="font2"
               >
                 <input
-                  className="sr-only"
+                  className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full "
                   type="radio"
                   name="font"
                   id="font2"
@@ -179,14 +194,21 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 Aa
               </label>
               <label
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === " ") {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
                 className={cn(
-                  "text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                  "fonts-radio focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
                 htmlFor="font3"
               >
                 <input
-                  className="sr-only"
+                  className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
                   type="radio"
                   name="font"
                   id="font3"
@@ -211,8 +233,15 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             </h4>
             <div className="colors-radios-container flex gap-4 w-38 mx-auto md:mx-0">
               <label
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === " ") {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
                 className={cn(
-                  "text-preset-2 w-10 h-10 flex items-center justify-center bg-red-400 text-transparent rounded-full",
+                  "fonts-radio focus:outline-none text-preset-2 w-10 h-10 flex items-center justify-center bg-red-400 text-transparent rounded-full",
                   "has-checked:text-black",
                 )}
                 htmlFor="color1"
@@ -234,8 +263,15 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 &#10003;
               </label>
               <label
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === " ") {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
                 className={cn(
-                  "text-preset-2 w-10 h-10 flex items-center justify-center bg-cyan-300 text-transparent rounded-full",
+                  " fonts-radio focus:outline-none text-preset-2 w-10 h-10 flex items-center justify-center bg-cyan-300 text-transparent rounded-full",
                   "has-checked:text-black ",
                 )}
                 htmlFor="color2"
@@ -257,8 +293,15 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 &#10003;
               </label>
               <label
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === " ") {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
                 className={cn(
-                  "text-preset-2 w-10 h-10 flex items-center justify-center bg-purple-400 text-transparent rounded-full ",
+                  "fonts-radio focus:outline-none text-preset-2 w-10 h-10 flex items-center justify-center bg-purple-400 text-transparent rounded-full ",
                   "has-checked:text-black",
                 )}
                 htmlFor="color3"
