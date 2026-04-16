@@ -18,6 +18,7 @@ function CircularProgress({ timeLeft, totalDuration }: CircularProgressProps) {
         strokeDashoffset={offset}
         strokeDasharray={circumference}
         strokeWidth={8}
+        stroke-linecap="round"
         transform="rotate(-90 150 150)   "
         style={{ transition: "stroke-dashoffset 1s linear" }}
       />

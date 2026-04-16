@@ -141,10 +141,11 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   }
                 }}
                 className={cn(
-                  "fonts-radio focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full ",
+                  "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full ",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
                 htmlFor="font1"
+                style={{ fontFamily: "Kumbh Sans" }}
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full "
@@ -172,10 +173,11 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   }
                 }}
                 className={cn(
-                  "fonts-radio focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                  "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
                 htmlFor="font2"
+                style={{ fontFamily: "Roboto Slab" }}
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full "
@@ -202,10 +204,11 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   }
                 }}
                 className={cn(
-                  "fonts-radio focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
+                  "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
                 htmlFor="font3"
+                style={{ fontFamily: "Space Mono" }}
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
@@ -247,7 +250,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 htmlFor="color1"
               >
                 <input
-                  className="sr-only"
+                  className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
                   type="radio"
                   name="color"
                   id="color1"
@@ -277,7 +280,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 htmlFor="color2"
               >
                 <input
-                  className="sr-only"
+                  className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
                   type="radio"
                   name="color"
                   id="color2"
@@ -307,7 +310,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 htmlFor="color3"
               >
                 <input
-                  className="sr-only"
+                  className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
                   type="radio"
                   name="color"
                   id="color3"

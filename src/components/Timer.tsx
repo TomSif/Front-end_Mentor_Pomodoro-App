@@ -40,6 +40,7 @@ function timerReducer(state: TimerState, action: TimerAction): TimerState {
     case "SET_MODE":
       return {
         ...state,
+        status: "idle",
         mode: action.payload.mode,
         timeLeft: action.payload.duration,
       };
@@ -52,6 +53,7 @@ function timerReducer(state: TimerState, action: TimerAction): TimerState {
     case "RESET_DURATIONS":
       return {
         ...state,
+        status: "idle",
         timeLeft: action.payload.duration,
       };
 
@@ -108,7 +110,7 @@ function Timer() {
 
   //actual mode duration
   const currentDuration = settings.durations[state.mode];
-  //useEffet TimeLeft === 0
+  //useEffet TimeLeft === 0 --> Send notification
   useEffect(() => {
     if (state.timeLeft === 0) {
       if (Notification.permission === "granted") {
@@ -159,12 +161,12 @@ function Timer() {
             totalDuration={settings.durations[state.mode] * 60}
           />
           <div className="timer-display flex flex-col items-center justify-start z-50 w-53 md:w-50">
-            <div className="display text-preset-1  min-w-53 flex items-center justify-between">
+            <div className="display text-preset-1   flex items-center  w-auto self-center -ml-3.5">
               {formatTime(state.timeLeft)}
             </div>
             <button
               onClick={() => dispatch(handleButtonClick(state.status))}
-              className="text-preset-2 hover:text-(--app-color)"
+              className="text-preset-2 hover:text-(--app-color) ml-2.75"
             >
               {handleButtonClick(state.status).type}
             </button>
