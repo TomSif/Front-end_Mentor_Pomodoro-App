@@ -59,6 +59,8 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               <input
                 className="w-35 h-10 text-blue-850 bg-blue-50 rounded-xl p-2.75 hover:border-[#979797] border-2 border-transparent"
                 type="number"
+                min={1}
+                max={60}
                 name="pomodoro"
                 id="pomodoro"
                 value={Number(draftSettings.durations.pomodoro)}
@@ -82,6 +84,8 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               <input
                 className="w-35 h-10 text-blue-850 bg-blue-50 rounded-xl p-2.75 hover:border-[#979797] border-2 border-transparent"
                 type="number"
+                min={1}
+                max={60}
                 name="shortBreak"
                 id="shortBreak"
                 value={Number(draftSettings.durations["short break"])}
@@ -108,6 +112,8 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               <input
                 className="w-35 h-10 text-blue-850 bg-blue-50 rounded-xl p-2.75 hover:border-[#979797] border-2 border-transparent"
                 type="number"
+                min={1}
+                max={60}
                 name="longBreak"
                 id="longBreak"
                 value={Number(draftSettings.durations["long break"])}
