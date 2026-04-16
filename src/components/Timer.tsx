@@ -160,13 +160,13 @@ function Timer() {
             timeLeft={state.timeLeft}
             totalDuration={settings.durations[state.mode] * 60}
           />
-          <div className="timer-display flex flex-col items-center justify-start z-50 w-53 md:w-50">
-            <div className="display text-preset-1   flex items-center  w-auto self-center -ml-3.5">
+          <div className="timer-display flex flex-col items-center justify-center z-50 w-64">
+            <div className="display text-preset-1  text-center flex items-center justify-center   w-[5ch] tabular-nums ">
               {formatTime(state.timeLeft)}
             </div>
             <button
               onClick={() => dispatch(handleButtonClick(state.status))}
-              className="text-preset-2 hover:text-(--app-color) ml-2.75"
+              className="text-preset-2 hover:text-(--app-color) w-full text-center mx-auto"
             >
               {handleButtonClick(state.status).type}
             </button>
