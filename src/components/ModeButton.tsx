@@ -10,6 +10,7 @@ interface ModeButtonInterface {
 function ModeButton({ mode, isActive, setMode }: ModeButtonInterface) {
   return (
     <button
+      type="button"
       onClick={() => setMode(mode)}
       className={`text-preset-3 ${cn(
         "   py-4 px-4.5 rounded-full hover:text-blue-100 flex items-center justify-center text-center",

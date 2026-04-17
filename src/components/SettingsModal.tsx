@@ -43,7 +43,14 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </button>
         </div>
       </section>
-      <form className="flex flex-col w-full py-6" action="">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setSettings(draftSettings);
+          onClose();
+        }}
+        className="flex flex-col w-full py-6"
+      >
         <fieldset className="input-number flex flex-col w-full gap-2 pb-6  border-b-2 border-grey-200">
           <legend className="text-preset-3-settings text-blue-850 text-center md:text-left pb-6 md:pb-4">
             TIME (MINUTES)
@@ -133,10 +140,15 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
         </fieldset>
         <fieldset className="fonts-radio-buttons w-full text-center py-6 border-b-2 border-grey-200">
+          <legend className="sr-only">Font</legend>{" "}
+          {/* invisible to respect legend as first child Html rules */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <h4 className="text-preset-3-settings text-blue-900 text-center pb-4 md:pb-0">
+            <h3
+              aria-hidden="true"
+              className="text-preset-3-settings text-blue-900 text-center pb-4 md:pb-0 "
+            >
               FONT
-            </h4>
+            </h3>
             <div className="fonts-radios-container flex gap-4 w-38 mx-auto md:mx-0">
               <label
                 tabIndex={0}
@@ -150,7 +162,6 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full ",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
-                htmlFor="font1"
                 style={{ fontFamily: "Kumbh Sans" }}
               >
                 <input
@@ -182,7 +193,6 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
-                htmlFor="font2"
                 style={{ fontFamily: "Roboto Slab" }}
               >
                 <input
@@ -213,7 +223,6 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
-                htmlFor="font3"
                 style={{ fontFamily: "Space Mono" }}
               >
                 <input
@@ -236,10 +245,14 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
         </fieldset>
         <fieldset className="colors-radio-buttons w-full text-center py-6 pb-8 md:pb-0">
+          <legend className="sr-only">Color</legend> {/* invisible*/}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <h4 className="text-preset-3-settings text-blue-900 text-center pb-4 md:pb-0">
+            <h3
+              aria-hidden="true"
+              className="text-preset-3-settings text-blue-900 text-center pb-4 md:pb-0"
+            >
               COLOR
-            </h4>
+            </h3>
             <div className="colors-radios-container flex gap-4 w-38 mx-auto md:mx-0">
               <label
                 tabIndex={0}
@@ -253,7 +266,6 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   "fonts-radio focus:outline-none text-preset-2 w-10 h-10 flex items-center justify-center bg-red-400 text-transparent rounded-full",
                   "has-checked:text-black",
                 )}
-                htmlFor="color1"
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
@@ -283,7 +295,6 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   " fonts-radio focus:outline-none text-preset-2 w-10 h-10 flex items-center justify-center bg-cyan-300 text-transparent rounded-full",
                   "has-checked:text-black ",
                 )}
-                htmlFor="color2"
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
@@ -313,7 +324,6 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   "fonts-radio focus:outline-none text-preset-2 w-10 h-10 flex items-center justify-center bg-purple-400 text-transparent rounded-full ",
                   "has-checked:text-black",
                 )}
-                htmlFor="color3"
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"
@@ -335,12 +345,8 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
         </fieldset>
         <button
-          type="button"
+          type="submit"
           data-font={draftSettings.font}
-          onClick={() => {
-            setSettings(draftSettings);
-            onClose();
-          }}
           className={`button-apply data-font bg-(--app-color) text-preset-2-settings text-white w-35 h-13 rounded-3xl  hover:bg-(--app-color) absolute bottom-0 left-1/2 -translate-x-1/2 -my-6 z-510`}
           style={{
             background: `var(--color-${draftSettings.color})`,

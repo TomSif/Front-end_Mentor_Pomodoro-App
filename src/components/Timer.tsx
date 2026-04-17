@@ -70,7 +70,14 @@ function formatTime(seconds: number): string {
   const secondsLeft = (seconds % 60).toString().padStart(2, "0");
   return `${minutesLeft}:${secondsLeft}`;
 }
-//Timùer Component
+function formatISO8601(seconds: number): string {
+  const minutesLeftIso = Math.floor(seconds / 60).toString();
+  const secondsLeftIso = (seconds % 60).toString();
+
+  return `PT${minutesLeftIso}M${secondsLeftIso}S`;
+}
+
+//Timer Component
 function Timer() {
   //states
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -161,9 +168,12 @@ function Timer() {
             totalDuration={settings.durations[state.mode] * 60}
           />
           <div className="timer-display flex flex-col items-center justify-center z-50 w-64">
-            <div className="display text-preset-1  text-center flex items-center justify-center   w-[5ch] tabular-nums ">
+            <time
+              dateTime={formatISO8601(state.timeLeft)}
+              className="display text-preset-1  text-center flex items-center justify-center   w-[5ch] tabular-nums "
+            >
               {formatTime(state.timeLeft)}
-            </div>
+            </time>
             <button
               onClick={() => dispatch(handleButtonClick(state.status))}
               className="text-preset-2 hover:text-(--app-color) w-full text-center mx-auto"
@@ -175,12 +185,12 @@ function Timer() {
       </main>
       <footer className=" w-full flex items-center mt-20 md:mt-36 xl:mt-16">
         <button
+          type="button"
           aria-label="open the settings page"
           aria-controls="settingsModal"
           onClick={() => {
             setIsOpen((isOpen) => !isOpen);
           }}
-          type="button"
           className="button-settings w-7 h-7 mx-auto transition-all ease-in-out 0.2s "
         >
           <img src="/assets/icon-settings.svg" alt="" />
