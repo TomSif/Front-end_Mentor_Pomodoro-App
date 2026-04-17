@@ -71,8 +71,10 @@ function formatTime(seconds: number): string {
   return `${minutesLeft}:${secondsLeft}`;
 }
 function formatISO8601(seconds: number): string {
-  const minutesLeftIso = Math.floor(seconds / 60).toString();
-  const secondsLeftIso = (seconds % 60).toString();
+  const minutesLeftIso = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
+  const secondsLeftIso = (seconds % 60).toString().padStart(2, "0");
 
   return `PT${minutesLeftIso}M${secondsLeftIso}S`;
 }

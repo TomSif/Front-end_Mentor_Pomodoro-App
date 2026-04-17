@@ -23,6 +23,12 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       dialogRef.current?.close();
     }
   }, [isOpen]);
+  //useEffect to listen esc key
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    dialog?.addEventListener("close", onClose);
+    return () => dialog?.removeEventListener("close", onClose);
+  }, [onClose]);
 
   return (
     <dialog
