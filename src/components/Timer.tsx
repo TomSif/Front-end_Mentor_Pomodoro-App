@@ -35,7 +35,7 @@ function timerReducer(state: TimerState, action: TimerAction): TimerState {
       return { ...state, status: "running" };
 
     case "TICK":
-      return { ...state, timeLeft: state.timeLeft - 1 };
+      return { ...state, timeLeft: Math.max(0, state.timeLeft - 1) };
 
     case "SET_MODE":
       return {
