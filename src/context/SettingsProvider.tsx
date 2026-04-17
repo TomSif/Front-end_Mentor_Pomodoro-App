@@ -6,6 +6,7 @@ import type { Settings } from "../types/types";
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
   // load save settings or DEFAULT_SETTINGS
   const [settings, setSettings] = useState<Settings>(() => {
+    if (typeof window === "undefined") return DEFAULT_SETTINGS;
     const saved = localStorage.getItem("pomodoro-settings");
     return saved ? (JSON.parse(saved) as Settings) : DEFAULT_SETTINGS;
   });

@@ -11,9 +11,9 @@ function ModeSelector({ onModeChange, mode }: TimerModeProps) {
   return (
     <nav aria-label="Timer mode">
       <ul className="flex  w-auto bg-blue-900 rounded-full items-center justify-between p-1.5 mx-auto">
-        {MODES.map((modeItem, index) => {
+        {MODES.map((modeItem) => {
           return (
-            <li key={index}>
+            <li key={modeItem}>
               <ModeButton
                 mode={modeItem}
                 setMode={() => {

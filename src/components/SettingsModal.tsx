@@ -193,7 +193,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
-                style={{ fontFamily: "Roboto Slab" }}
+                style={{ fontFamily: "Space Mono" }}
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full "
@@ -223,7 +223,7 @@ function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   "fonts-radio font-bold focus:outline-none text-preset-2-settings w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-850/73 rounded-full",
                   "has-checked:bg-black has-checked:text-white ",
                 )}
-                style={{ fontFamily: "Space Mono" }}
+                style={{ fontFamily: "Roboto Slab" }}
               >
                 <input
                   className="appearance-none absolute inset-0 w-full h-full cursor-pointer rounded-full"

@@ -160,8 +160,8 @@ function Timer() {
           mode={state.mode}
         />
       </header>
+      <SettingsModal isOpen={isOpen} onClose={onClose} />
       <main className="timer-bg w-70 h-70 xl:w-110 xl:h-110 rounded-full flex flex-col items-center justify-center mt-11.5 md:mt-27 xl:mt-9">
-        <SettingsModal isOpen={isOpen} onClose={onClose} />
         <div className="timer-container w-64 h-64  xl:w-100 xl:h-100 rounded-full bg-blue-950 text-white flex flex-col items-center justify-center relative">
           <CircularProgress
             timeLeft={state.timeLeft}
@@ -175,6 +175,7 @@ function Timer() {
               {formatTime(state.timeLeft)}
             </time>
             <button
+              type="button"
               onClick={() => dispatch(handleButtonClick(state.status))}
               className="text-preset-2 hover:text-(--app-color) w-full text-center mx-auto"
             >
